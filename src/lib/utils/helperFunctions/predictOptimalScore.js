@@ -1,8 +1,55 @@
-export const predictScores = (players, week, leagueData) => {
-    const starterPositions = getStarterPositions(leagueData);
+// How much weight actual performance gets vs. the raw projection, based on
+// how many weeks of the season have already been completed. completedWeeks
+// of 0 signals "no blending" -- the caller should use the raw projection.
+const getBlendWeights = (completedWeeks) => {
+    if(completedWeeks <= 0) return null;
+    if(completedWeeks <= 2) return { actual: 0.2, proj: 0.8 };
+    if(completedWeeks <= 7) return { actual: 0.5, proj: 0.5 };
+    if(completedWeeks <= 12) return { actual: 0.7, proj: 0.3 };
+    return { actual: 0.85, proj: 0.15 };
+}
 
-    // sort roster by highest projected points for that week
-    const projectedPlayers = [...players].sort((a, b) => (b.wi && b.wi[week] ? b.wi[week].p : 0) - (a.wi && a.wi[week] ? a.wi[week].p : 0));
+// Average of a player's actual scored points across completed weeks,
+// only counting weeks they actually played (pts > 0). Returns null if
+// they haven't played any completed week yet (e.g. a rookie or new add),
+// so the caller can fall back to the raw projection instead of unfairly
+// blending in a zero.
+const getActualPPG = (player, completedWeeks) => {
+    let total = 0;
+    let gamesPlayed = 0;
+    for(let wk = 1; wk <= completedWeeks; wk++) {
+        const actual = player.wi && player.wi[wk] ? parseFloat(player.wi[wk].a) : 0;
+        if(actual > 0) {
+            total += actual;
+            gamesPlayed++;
+        }
+    }
+    return gamesPlayed > 0 ? total / gamesPlayed : null;
+}
+
+const getBlendedScore = (player, week, completedWeeks, blendWeights) => {
+    const projected = parseFloat(player.wi && player.wi[week] ? player.wi[week].p : 0) || 0;
+    if(!blendWeights) return projected;
+
+    const actualPPG = getActualPPG(player, completedWeeks);
+    if(actualPPG == null) return projected;
+
+    return (actualPPG * blendWeights.actual) + (projected * blendWeights.proj);
+}
+
+export const predictScores = (players, week, leagueData, completedWeeks = 0) => {
+    const starterPositions = getStarterPositions(leagueData);
+    const blendWeights = getBlendWeights(completedWeeks);
+
+    // blend each player's projection for this week with their actual PPG
+    // (when there's enough season played to do so) before ranking them
+    const blendedPlayers = players.map((player) => ({
+        ...player,
+        blended: getBlendedScore(player, week, completedWeeks, blendWeights),
+    }));
+
+    // sort roster by highest blended score for that week
+    const projectedPlayers = [...blendedPlayers].sort((a, b) => b.blended - a.blended);
 
     // now that the players are sorted, grab the QBs
     const qbs = projectedPlayers.filter(p => p.pos == 'QB');
@@ -26,15 +73,15 @@ export const predictScores = (players, week, leagueData) => {
     let powerScore = 0;
     // next, use the roster configuration to grab the highest scorer at each position
     for(const starterPosition of starterPositions) {
-        const qb = parseFloat(qbs[0]?.wi && qbs[0]?.wi[week] ? qbs[0].wi[week].p : 0);
-        const rb = parseFloat(rbs[0]?.wi && rbs[0]?.wi[week] ? rbs[0].wi[week].p : 0);
-        const wr = parseFloat(wrs[0]?.wi && wrs[0]?.wi[week] ? wrs[0].wi[week].p : 0);
-        const te = parseFloat(tes[0]?.wi && tes[0]?.wi[week] ? tes[0].wi[week].p : 0);
-        const dl = parseFloat(dls[0]?.wi && dls[0]?.wi[week] ? dls[0].wi[week].p : 0);
-        const lb = parseFloat(lbs[0]?.wi && lbs[0]?.wi[week] ? lbs[0].wi[week].p : 0);
-        const db = parseFloat(dbs[0]?.wi && dbs[0]?.wi[week] ? dbs[0].wi[week].p : 0);
-        const k = parseFloat(ks[0]?.wi && ks[0]?.wi[week] ? ks[0].wi[week].p : 0);
-        const def = parseFloat(defs[0]?.wi && defs[0]?.wi[week] ? defs[0].wi[week].p : 0);
+        const qb = qbs[0]?.blended ?? 0;
+        const rb = rbs[0]?.blended ?? 0;
+        const wr = wrs[0]?.blended ?? 0;
+        const te = tes[0]?.blended ?? 0;
+        const dl = dls[0]?.blended ?? 0;
+        const lb = lbs[0]?.blended ?? 0;
+        const db = dbs[0]?.blended ?? 0;
+        const k = ks[0]?.blended ?? 0;
+        const def = defs[0]?.blended ?? 0;
         switch (starterPosition) {
             case 'QB':
                 qbs.shift();

@@ -17,6 +17,15 @@
         if(week == 0) {
             week = 1;
         }
+
+        // how many weeks of the season have actual stats to blend with projections
+        let completedWeeks = 0;
+        if(nflState.season_type == 'regular') {
+            completedWeeks = Math.max(0, nflState.week - 1);
+        } else if(nflState.season_type == 'post') {
+            completedWeeks = leagueData.settings.playoff_week_start - 1;
+        }
+
         let max = 0;
 
         for(const rosterID in rosters) {
@@ -47,7 +56,7 @@
                 seasonOver = true;
             }
             for(let i = week; i < seasonEnd; i++) {
-                rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData);
+                rosterPower.powerScore += predictScores(rosterPlayers, i, leagueData, completedWeeks);
             }
             if(rosterPower.powerScore > max) {
                 max = rosterPower.powerScore;
