@@ -149,7 +149,7 @@
     
     <h3 class="subSectionHeading" bind:this={oneOne}>1.1 Positional Breakdown</h3>
     
-    <p>20 Total Players on the active roster (not counting IR or Taxi Squad)</p>
+    <p>25 Total Players on the active roster (not counting IR or Taxi Squad)</p>
 
     <p class="underscore">Starters</p>
     <ul>
@@ -161,16 +161,16 @@
         <li>FLEX (RB/WR/TE)</li>
         <li>FLEX (RB/WR/TE)</li>
         <li>FLEX (RB/WR/TE)</li>
-        <li>SUPER FLEX (QB/RB/WR/TE)</li>
+        <li>FLEX (RB/WR/TE)</li>
         <li>D/ST</li>
         <li>K</li>
     </ul>
 
-    <p>9 Bench (trimmed ahead of the 2025 season to keep the waiver wire competitive)</p>
+    <p>14 Bench</p>
 
     <p>6 IR Spots (Player must be labeled as IR, Out, or Covid in the Sleeper App)</p>
 
-    <p>4 Taxi Squad Spots. Taxi eligibility follows the Sleeper settings (currently players with two or fewer years of NFL experience), and players must be placed on the taxi squad before the start of the regular season. Taxi players do not count against the 20-man active roster but cannot be started.</p>
+    <p>4 Taxi Squad Spots. Taxi eligibility follows the Sleeper settings (currently players with two or fewer years of NFL experience), and players must be placed on the taxi squad before the start of the regular season. Taxi players do not count against the 25-man active roster but cannot be started.</p>
     
   <!--  <h4 bind:this={oneOneOne}>1.1.1 Position Maximums</h4>
         
@@ -254,12 +254,12 @@
     <h2 class="sectionHeading" bind:this={three}>Section 3 Scoring System</h2>
 
     <h3 bind:this={threeOne}>3.1 Scoring System</h3>
-    <p>The league scoring system breakdown is listed on the Sleeper fantasy app (for the most part, it follows old school NFL.com PPR scoring, where the league was for a decade).</p>
+    <p>This is a full PPR league (1 point per reception). The complete scoring breakdown, including yardage, touchdowns, and defense/special teams scoring, is listed on the Sleeper fantasy app.</p>
     
     <h2 class="sectionHeading" bind:this={four}>Section 4 Postseason</h2>
     
     <h3 bind:this={fourOne}>4.1 Playoffs</h3>
-    <p>At the end of the season 4 teams will make the playoffs. The first round of playoffs will commence in week 16. Each playoff matchup will only last one week and the winner will advance. Week 18 will not be used.</p>
+    <p>At the end of the season 6 teams will make the playoffs. The first round of playoffs will commence in week 15. Each playoff matchup will only last one week and the winner will advance. Week 18 will not be used.</p>
     
     <h3 bind:this={fourTwo}>4.2 Seeding Tiebreakers</h3>
     <p>If two teams finish with the same record the tiebreakers will go as followed:</p>
