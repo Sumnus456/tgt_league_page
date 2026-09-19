@@ -13,7 +13,7 @@
     const sortOrder = ["fptsAgainst", "divisionTies", "divisionWins", "fpts", "ties", "wins"];
 
     // Column order from left to right
-    const columnOrder = [{name: "W", field: "wins"}, {name: "T", field: "ties"}, {name: "L", field: "losses"}, {name: "FPTS", field: "fpts"}, {name: "FPTS Against", field: "fptsAgainst"}, {name: "Streak", field: "streak"}]
+    const columnOrder = [{name: "W", field: "wins"}, {name: "L", field: "losses"}, {name: "T", field: "ties"}, {name: "FPTS", field: "fpts"}, {name: "FPTS Against", field: "fptsAgainst"}, {name: "Streak", field: "streak"}]
 
     let loading = true;
     let preseason = false;
