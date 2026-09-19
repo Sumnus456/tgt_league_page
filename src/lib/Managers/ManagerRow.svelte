@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers } from "$lib/utils/helperFunctions/universalFunctions";
+	import { getDatesActive, getRosterIDFromManagerID, getTeamNameFromTeamManagers, getAvatarFromTeamManagers, handleAvatarError } from "$lib/utils/helperFunctions/universalFunctions";
     import {dynasty} from "$lib/utils/leagueInfo"
 
     export let manager, leagueTeamManagers, key;
@@ -231,7 +231,7 @@
 
 <div class="manager" style="{retired ? "background-image: url(/retired.png); background-color: var(--ddd)": ""}" onclick={() => goto(`/manager?manager=${key}`)}>
     <div class="avatarHolder">
-        <img class="photo" src="{manager.photo}" alt="{manager.name}" />
+        <img class="photo" src="{getAvatarFromTeamManagers(leagueTeamManagers, rosterID, year)}" alt="{manager.name}" onerror={handleAvatarError} />
         {#if commissioner}
             <div class="commissionerBadge">
                 <span>C</span>

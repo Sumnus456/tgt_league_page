@@ -2,11 +2,11 @@
 	import { tabs, isExternal } from '$lib/utils/tabs';
 	import { page } from '$app/state';
 	import { preloadData } from '$app/navigation';
-	import { enableBlog, managers, leagueName } from '$lib/utils/leagueInfo';
+	import { enableBlog, managers, leagueName, leagueID } from '$lib/utils/leagueInfo';
 
 	let { darkTheme = $bindable(), switchTheme } = $props();
 
-	const SLEEPER_LEAGUE_URL = 'https://sleeper.com/leagues/1338193642489118720';
+	const SLEEPER_LEAGUE_URL = `https://sleeper.com/leagues/${leagueID}`;
 
 	const currentPath = $derived(page.url.pathname);
 
