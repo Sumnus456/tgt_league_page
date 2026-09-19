@@ -7,7 +7,7 @@ export const enableBlog = false; // requires VITE_CONTENTFUL_ACCESS_TOKEN and VI
 
 /*   STEP 2   */
 export const homepageText = `
-  <p>In September 2022, the Tabletop Game Talk podcast had an episode about Fantasy Football. What it is, how it works, why people play it. Correlations between it and other board or tabletop games. What happens when some people with an interest in board or tabletop games listen to a podcast where the hosts talk about Fantasy Football? A league is born!</p>
+  <p>In September 2022, the Tabletop Game Talk podcast had an <a href="https://tabletopgametalk.com/tgt302/" target="_blank" rel="noopener noreferrer">episode about Fantasy Football</a>. What it is, how it works, why people play it. Correlations between it and other board or tabletop games. What happens when some people with an interest in board or tabletop games listen to a podcast where the hosts talk about Fantasy Football? A league is born!</p>
   <p>So that following fall, after a number of listeners started a traditional redraft league together, some decided to continue on and start a Dynasty league. This website will share some of those adventures.</p>
 `;
 
