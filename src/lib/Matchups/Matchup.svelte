@@ -174,7 +174,7 @@
 
     :global(.awayGlow) {
         box-shadow: 0 0 6px 4px #d15454;
-        background-color: #920505 !important;
+        background-color: var(--blueOne) !important;
     }
 
     .name {

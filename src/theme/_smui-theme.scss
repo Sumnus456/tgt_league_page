@@ -65,9 +65,9 @@
   --fadeTwo: rgba(255, 255, 255, 0.7) 50%;
   --fadeThree: rgba(255, 255, 255, 0.9) 90%;
   --fadeFour: rgba(255, 255, 255, 1) 100%;
-  --blueOne: #1e3a5f;
+  --blueOne: #297235;
   --blueTwo: #0082c3;
-  --ctaBtn: #c87d0e;
+  --ctaBtn: #297235;
   --ctaBtnHover: #b86d00;
   --r1: #f7f9fd;
   --r2: #fbf7f7;
@@ -77,13 +77,21 @@
   --rivalryBack: #f8f8f8;
 
   // Main nav
-  --navBg: #f1f5f9;
-  --navBorder: #1e3a5f;
+  --navBg: #F7F5F0;
+  --navBorder: #A37248;
   --logoIconBg: #1e3a5f;
   --logoIconText: #f1a527;
   --navInactive: #475569;
-  --navHover: #c87d0e;
-  --navActive: #c87d0e;
+  --navHover: #297235;
+  --navActive: #297235;
+
+  // TGT palette
+  --primaryText: #1A1A19;
+  --bodyText: #3D3D3B;
+  --sidebarBg: #EDE9E2;
+  --cardBg: #ECEAE4;
+  --sectionLabel: #A37248;
+  --accentBorder: #A37248;
 
   // Chart bar colors
   --barChartOne: #7fc4f5;
@@ -132,9 +140,9 @@ body {
   position: relative;
   margin: 0;
   background-color: theme.$surface;
-  color: theme.$on-surface;
+  color: var(--bodyText);
   min-height: 100vh;
-  background: #f1f5f9;
+  background: var(--navBg);
 }
  
 //
@@ -146,26 +154,35 @@ html {
   @include typography.typography('body1');
 }
  
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--navActive);
+}
+
 h1 {
   @include typography.typography('headline1');
 }
- 
+
 h2 {
   @include typography.typography('headline2');
 }
- 
+
 h3 {
   @include typography.typography('headline3');
 }
- 
+
 h4 {
   @include typography.typography('headline4');
 }
- 
+
 h5 {
   @include typography.typography('headline5');
 }
- 
+
 h6 {
   @include typography.typography('headline6');
 }
@@ -190,6 +207,7 @@ big {
 b,
 strong {
   font-weight: bold;
+  color: var(--primaryText);
 }
 
 a {

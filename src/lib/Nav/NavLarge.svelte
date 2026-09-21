@@ -35,6 +35,23 @@
 		flex-shrink: 0;
 	}
 
+	.logoIcon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 48px;
+		height: 48px;
+		flex-shrink: 0;
+		border-radius: 10px;
+		background: linear-gradient(135deg, #101010, #383838);
+	}
+
+	.logoIcon img {
+		width: 34px;
+		height: 34px;
+		object-fit: contain;
+	}
+
 	.leagueName {
 		font-weight: 600;
 		font-size: 20px;
@@ -131,13 +148,15 @@
 		font-size: 0.7em;
 		font-weight: 700;
 		letter-spacing: 0.06em;
-		color: var(--navInactive);
+		color: var(--sectionLabel);
 	}
 </style>
 
 <header class="topBar">
 	<a href="/" class="brand">
-		<img src="/badge.png" alt="league logo" style="width: 48px; height: 48px; object-fit: contain;" />
+		<span class="logoIcon">
+				<img src="/badge.png" alt="league logo" />
+			</span>
 		<span class="leagueName">{leagueName}</span>
 	</a>
 
