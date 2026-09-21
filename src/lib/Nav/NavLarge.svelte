@@ -39,16 +39,14 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		width: 48px;
-		height: 48px;
 		flex-shrink: 0;
 		border-radius: 10px;
 		background: transparent;
 	}
 
 	.logoIcon img {
-		width: 34px;
-		height: 34px;
+		width: 56px;
+		height: 56px;
 		object-fit: contain;
 	}
 
