@@ -43,7 +43,7 @@
 		height: 48px;
 		flex-shrink: 0;
 		border-radius: 10px;
-		background: linear-gradient(135deg, #101010, #383838);
+		background: transparent;
 	}
 
 	.logoIcon img {
