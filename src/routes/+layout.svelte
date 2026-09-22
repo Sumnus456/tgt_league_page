@@ -39,9 +39,9 @@
         .appShell {
             display: grid;
             grid-template-columns: 220px 1fr;
-            grid-template-rows: 220px 1fr;
+            grid-template-rows: 80px 1fr;
             grid-template-areas:
-                "topbar topbar"
+                "leftnav topbar"
                 "leftnav content";
             min-height: 100vh;
         }
@@ -49,7 +49,7 @@
         .appShell.has-sidebar {
             grid-template-columns: 220px 1fr clamp(220px, 22vw, 300px);
             grid-template-areas:
-                "topbar topbar topbar"
+                "leftnav topbar topbar"
                 "leftnav content sidebar";
         }
 
@@ -59,6 +59,7 @@
 
         :global(.appShell .leftNav) {
             grid-area: leftnav;
+            grid-row: 1 / -1;
         }
 
         :global(.appShell .pageContent) {

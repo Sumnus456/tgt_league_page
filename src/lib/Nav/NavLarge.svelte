@@ -21,33 +21,10 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 220px;
+		height: 80px;
 		padding: 0 24px;
 		background-color: var(--navBg);
 		border-bottom: 2px solid var(--navBorder);
-	}
-
-	.brand {
-		display: flex;
-		align-items: center;
-		gap: 0.6em;
-		text-decoration: none;
-		flex-shrink: 0;
-	}
-
-	.logoIcon {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-shrink: 0;
-		border-radius: 10px;
-		background: transparent;
-	}
-
-	.logoIcon img {
-		width: 168px;
-		height: 168px;
-		object-fit: contain;
 	}
 
 	.leagueName {
@@ -55,6 +32,27 @@
 		font-size: 20px;
 		color: var(--navActive);
 		white-space: nowrap;
+		text-decoration: none;
+		flex-shrink: 0;
+	}
+
+	.navLogo {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		height: 130px;
+		flex-shrink: 0;
+	}
+
+	.navLogo img {
+		width: 100px;
+		height: 100px;
+		object-fit: contain;
+	}
+
+	.navLogo + .navList {
+		border-top: 1px solid var(--navBorder);
+		padding-top: 0.75em;
 	}
 
 	.topBarRight {
@@ -151,12 +149,7 @@
 </style>
 
 <header class="topBar">
-	<a href="/" class="brand">
-		<span class="logoIcon">
-				<img src="/badge.png" alt="league logo" />
-			</span>
-		<span class="leagueName">{leagueName}</span>
-	</a>
+	<a href="/" class="leagueName">{leagueName}</a>
 
 	<div class="topBarRight">
 		<a href={SLEEPER_LEAGUE_URL} target="_blank" rel="noopener noreferrer" class="iconLink" aria-label="Go to Sleeper">
@@ -169,6 +162,10 @@
 </header>
 
 <nav class="leftNav">
+	<a href="/" class="navLogo">
+		<img src="/badge.png" alt="league logo" />
+	</a>
+
 	<ul class="navList">
 		{#each tabs as tab}
 			{#if tab.nest}
