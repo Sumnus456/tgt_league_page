@@ -1,6 +1,6 @@
 <script>
 	import { onMount, onDestroy } from 'svelte';
-	import { leagueName, homepageText, enableBlog } from '$lib/utils/helper';
+	import { homepageText, enableBlog } from '$lib/utils/helper';
 	import { PowerRankings, HomePost, HomeSidebar } from '$lib/components';
 	import { sidebarContent } from '$lib/stores';
 
@@ -26,7 +26,7 @@
         flex-grow: 1;
         min-width: 320px;
         margin: 0 auto;
-        padding: 60px 0;
+        padding: 60px 3px;
     }
 
     .text {
@@ -34,16 +34,11 @@
         max-width: 900px;
         margin: 0 auto;
     }
-
-    h6 {
-        text-align: center;
-    }
 </style>
 
 <div id="home">
     <div id="main">
         <div class="text">
-            <h6>{leagueName}</h6>
             <!-- homepageText contains the intro text for your league, this gets edited in /src/lib/utils/leagueInfo.js -->
             {@html homepageText }
             <!-- Most recent Blog Post (if enabled) -->
