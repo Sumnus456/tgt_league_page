@@ -71,6 +71,7 @@
         .rightSidebar {
             grid-area: sidebar;
             overflow-y: auto;
+            padding-top: 3px;
         }
     }
 </style>
