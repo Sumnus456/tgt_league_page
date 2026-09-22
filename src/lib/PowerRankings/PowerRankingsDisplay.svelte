@@ -108,10 +108,20 @@
         width: 100%;
         padding-left: 8px;
     }
+
+    .explainer {
+        text-align: center;
+        font-size: 0.85em;
+        color: var(--bodyText);
+        max-width: 700px;
+        margin: 0.5em auto 0;
+        padding: 0 1em;
+    }
 </style>
 
 {#if validGraph && !seasonOver}
     <div class="enclosure">
         <BarChart {graphs} bind:curGraph={curGraph} {leagueTeamManagers} />
     </div>
+    <p class="explainer">Power rankings estimate how strong each roster is for the rest of the season. They weigh past performance of your players, as well as Sleeper's projections for future games.</p>
 {/if}
