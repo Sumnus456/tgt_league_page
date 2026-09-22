@@ -21,7 +21,7 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		height: 80px;
+		height: 220px;
 		padding: 0 24px;
 		background-color: var(--navBg);
 		border-bottom: 2px solid var(--navBorder);
@@ -45,8 +45,8 @@
 	}
 
 	.logoIcon img {
-		width: 56px;
-		height: 56px;
+		width: 168px;
+		height: 168px;
 		object-fit: contain;
 	}
 
