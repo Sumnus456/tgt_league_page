@@ -40,19 +40,15 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		height: 130px;
+		height: 200px;
 		flex-shrink: 0;
+		margin-bottom: 0.5em;
 	}
 
 	.navLogo img {
-		width: 100px;
-		height: 100px;
+		width: 168px;
+		height: 168px;
 		object-fit: contain;
-	}
-
-	.navLogo + .navList {
-		border-top: 1px solid var(--navBorder);
-		padding-top: 0.75em;
 	}
 
 	.topBarRight {
@@ -154,6 +150,9 @@
 	<div class="topBarRight">
 		<a href={SLEEPER_LEAGUE_URL} target="_blank" rel="noopener noreferrer" class="iconLink" aria-label="Go to Sleeper">
 			<img src="/Sleeper.png" alt="Sleeper" />
+		</a>
+		<a href="https://tabletopgametalk.com/" target="_blank" rel="noopener noreferrer" class="iconLink" aria-label="Go to the Tabletop Game Talk podcast">
+			<img src="/podcastLink.png" alt="Tabletop Game Talk podcast" />
 		</a>
 		<button type="button" class="themeToggle" onclick={toggleTheme} aria-label="Toggle dark mode">
 			<span class="material-icons">{darkTheme ? 'light_mode' : 'dark_mode'}</span>
