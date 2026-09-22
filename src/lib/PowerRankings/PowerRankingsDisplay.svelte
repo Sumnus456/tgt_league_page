@@ -106,6 +106,7 @@
         display: block;
         position: relative;
         width: 100%;
+        padding-left: 8px;
     }
 </style>
 
