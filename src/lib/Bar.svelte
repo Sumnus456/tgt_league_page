@@ -76,6 +76,7 @@
         z-index: 12;
         vertical-align: text-top;
         margin-left: 40px;
+        color: #1A1A19;
     }
 
     .vCenter {
